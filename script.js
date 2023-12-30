@@ -31,6 +31,9 @@ const onHover = () => {
       if (event.buttons === 1) {
         element.style.backgroundColor = "black";
       }
+    element.addEventListener("mousedown", () => {
+      element.style.backgroundColor = "black";
+    })
     });
   });
 };
