@@ -6,4 +6,12 @@ window.addEventListener("load", () => {
     canvasElement.classList.add("canvas-element");
     container.appendChild(canvasElement);
   }
+  const canvasElements = document.querySelectorAll(".canvas-element");
+  canvasElements.forEach((element) => {
+    element.addEventListener("mouseover", (event) => {
+      if (event.buttons === 1) {
+        element.style.backgroundColor = "black";
+      }
+    });
+  });
 });
