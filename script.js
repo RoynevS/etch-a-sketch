@@ -1,11 +1,23 @@
 const container = document.querySelector(".container");
+const gridSizeSelector = document.querySelector("#grid-size");
+const valueOutput = document.querySelector(".value");
 
-window.addEventListener("load", () => {
-  for (let i = 0; i < 16 * 16; i++) {
+const removeGrid = () => {
+  const canvasElements = document.querySelectorAll(".canvas-element");
+  canvasElements.forEach((element) => {
+    container.removeChild(element);
+  });
+};
+
+const drawGrid = (value) => {
+  for (let i = 0; i <  value * value; i++) {
     const canvasElement = document.createElement("div");
     canvasElement.classList.add("canvas-element");
     container.appendChild(canvasElement);
   }
+};
+
+const onHover = () => {
   const canvasElements = document.querySelectorAll(".canvas-element");
   canvasElements.forEach((element) => {
     element.addEventListener("mouseover", (event) => {
@@ -14,4 +26,17 @@ window.addEventListener("load", () => {
       }
     });
   });
+};
+
+window.addEventListener("load", () => {
+  drawGrid(gridSizeSelector.value);
+  onHover();
+
+  gridSizeSelector.addEventListener("input", () => {
+    valueOutput.textContent = gridSizeSelector.value;
+    removeGrid();
+    drawGrid(gridSizeSelector.value);
+    onHover();
+  });
 });
+
