@@ -7,6 +7,15 @@
 .container {
   margin: 10px auto 0;
   border: 3px solid black;
-  width: 960px;
-  height: 540px;
+  width: 566px;
+  height: 566px;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.canvas-element {
+  border: 2px solid red;
+  width: 35px;
+  height: 35px;
 }
