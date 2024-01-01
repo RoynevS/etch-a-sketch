@@ -2,6 +2,9 @@ const container = document.querySelector(".container");
 const gridSizeSelector = document.querySelector("#grid-size");
 const valueOutput = document.querySelector(".value");
 const btnClear = document.querySelector("#clear");
+const btnColorMode = document.querySelector("#colormode");
+const btnEraser = document.querySelector("#eraser");
+const colorPicker = document.querySelector("#pen-color");
 
 const removeGrid = () => {
   const canvasElements = document.querySelectorAll(".canvas-element");
@@ -12,7 +15,7 @@ const removeGrid = () => {
 
 const getSize = (value) => {
   return `${560 / value}px`;
-}
+};
 
 const drawGrid = (value) => {
   for (let i = 0; i <  value * value; i++) {
@@ -25,15 +28,15 @@ const drawGrid = (value) => {
   }
 };
 
-const onHover = () => {
+const onHover = (color) => {
   const canvasElements = document.querySelectorAll(".canvas-element");
   canvasElements.forEach((element) => {
     element.addEventListener("mouseover", (event) => {
       if (event.buttons === 1) {
-        element.style.backgroundColor = "black";
+        element.style.backgroundColor = color;
       }
     element.addEventListener("mousedown", () => {
-      element.style.backgroundColor = "black";
+      element.style.backgroundColor = color;
     })
     });
   });
@@ -41,23 +44,28 @@ const onHover = () => {
 
 window.addEventListener("load", () => {
   drawGrid(gridSizeSelector.value);
-  onHover();
+  onHover(colorPicker.value);
+
+  colorPicker.addEventListener("input", () => {
+    onHover(colorPicker.value);
+    console.log("yes");
+  });
 
   gridSizeSelector.addEventListener("input", () => {
     value = gridSizeSelector.value;
     valueOutput.textContent = `${value} x ${value}`;
-  })
+  });
 
   gridSizeSelector.addEventListener("change", () => {
     removeGrid();
     drawGrid(gridSizeSelector.value);
-    onHover();
+    onHover(colorPicker.value);
   });
 
   btnClear.addEventListener("click", () => {
     removeGrid();
     drawGrid(gridSizeSelector.value);
-    onHover();
+    onHover(colorPicker.value);
   });
 });
 
