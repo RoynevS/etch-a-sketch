@@ -47,7 +47,11 @@ window.addEventListener("load", () => {
   onHover(colorPicker.value);
 
   colorPicker.addEventListener("input", () => {
-    btnColorMode.classList.contains("active") ? onHover(colorPicker.value) : onHover("white");
+    onHover(colorPicker.value);
+    if (!btnColorMode.classList.contains("active")) {
+      btnEraser.classList.toggle("active");
+      btnColorMode.classList.toggle("active");
+    }
   });
 
   gridSizeSelector.addEventListener("input", () => {
