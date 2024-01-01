@@ -18,3 +18,7 @@
   width: 35px;
   height: 35px;
 }
+
+.active {
+  background-color: blueviolet;
+}
