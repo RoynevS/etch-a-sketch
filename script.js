@@ -58,25 +58,41 @@ window.addEventListener("load", () => {
   gridSizeSelector.addEventListener("change", () => {
     removeGrid();
     drawGrid(gridSizeSelector.value);
-    btnColorMode.classList.contains("active") ? onHover(colorPicker.value) : onHover("white");
+
+    if (!btnColorMode.classList.contains("active")) {
+      btnEraser.classList.toggle("active");
+      btnColorMode.classList.toggle("active");
+    }
+
+    onHover(colorPicker.value);
   });
 
   btnClear.addEventListener("click", () => {
     removeGrid();
     drawGrid(gridSizeSelector.value);
-    btnColorMode.classList.contains("active") ? onHover(colorPicker.value) : onHover("white");
+
+    if (!btnColorMode.classList.contains("active")) {
+      btnEraser.classList.toggle("active");
+      btnColorMode.classList.toggle("active");
+    }
+    
+    onHover(colorPicker.value);
   });
 
   btnEraser.addEventListener("click", () => {
-    btnEraser.classList.toggle("active");
-    btnColorMode.classList.toggle("active");
-    onHover("white");
+    if (!btnEraser.classList.contains("active")) {
+      btnEraser.classList.toggle("active");
+      btnColorMode.classList.toggle("active");
+      onHover("white");
+    }
   });
 
   btnColorMode.addEventListener("click", () => {
-    btnEraser.classList.toggle("active");
-    btnColorMode.classList.toggle("active");
-    onHover(colorPicker.value);
+    if (!btnColorMode.classList.contains("active")) {
+      btnEraser.classList.toggle("active");
+      btnColorMode.classList.toggle("active");
+      onHover(colorPicker.value);
+    }
   });
 });
 
