@@ -9,20 +9,23 @@
   </head>
 
   <body>
-    <div class="options">
-      <div class="grid-size">
-        <label for="grid-size">Select the size of the grid:</label>
-        <input type="range" name="grid-size" id="grid-size" min="8" max="100" value="16" step="4">
-        <p class="value">16 x 16</p>
+    <h1 class="heading">Etch-a-Sketch</h1>
+    <div class="content-container">
+      <div class="options">
+        <div class="grid-size">
+          <label for="grid-size" class="range-label">Select the size of the grid:</label>
+          <input type="range" name="grid-size" id="grid-size" min="8" max="100" value="16" step="4">
+          <p class="value">16 x 16</p>
+        </div>
+        <div class="color-mode">
+          <label for="pen-color">Pick a color:</label>
+          <input type="color" name="pen-color" id="pen-color" value="#000000">
+          <button class="btn btn-colormode active" id="colormode">Color mode</button>
+          <button class="btn btn-eraser" id="eraser">Eraser</button>
+        </div>
+        <button class="btn btn-clear" id="clear">Clear</button>
       </div>
-      <div class="color-mode">
-        <label for="pen-color">Pick a color:</label>
-        <input type="color" name="pen-color" id="pen-color" value="#000000">
-        <button class="btn btn-colormode active" id="colormode">Color mode</button>
-        <button class="btn btn-eraser" id="eraser">Eraser</button>
-      </div>
-      <button class="btn btn-clear" id="clear">Clear</button>
+      <div class="container"></div>
     </div>
-    <div class="container"></div>
   </body>
 </html>
