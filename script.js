@@ -47,8 +47,7 @@ window.addEventListener("load", () => {
   onHover(colorPicker.value);
 
   colorPicker.addEventListener("input", () => {
-    onHover(colorPicker.value);
-    console.log("yes");
+    btnColorMode.classList.contains("active") ? onHover(colorPicker.value) : onHover("white");
   });
 
   gridSizeSelector.addEventListener("input", () => {
@@ -59,12 +58,24 @@ window.addEventListener("load", () => {
   gridSizeSelector.addEventListener("change", () => {
     removeGrid();
     drawGrid(gridSizeSelector.value);
-    onHover(colorPicker.value);
+    btnColorMode.classList.contains("active") ? onHover(colorPicker.value) : onHover("white");
   });
 
   btnClear.addEventListener("click", () => {
     removeGrid();
     drawGrid(gridSizeSelector.value);
+    btnColorMode.classList.contains("active") ? onHover(colorPicker.value) : onHover("white");
+  });
+
+  btnEraser.addEventListener("click", () => {
+    btnEraser.classList.toggle("active");
+    btnColorMode.classList.toggle("active");
+    onHover("white");
+  });
+
+  btnColorMode.addEventListener("click", () => {
+    btnEraser.classList.toggle("active");
+    btnColorMode.classList.toggle("active");
     onHover(colorPicker.value);
   });
 });
