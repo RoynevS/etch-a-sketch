@@ -1,6 +1,7 @@
 const container = document.querySelector(".container");
 const gridSizeSelector = document.querySelector("#grid-size");
 const valueOutput = document.querySelector(".value");
+const btnClear = document.querySelector("#clear");
 
 const removeGrid = () => {
   const canvasElements = document.querySelectorAll(".canvas-element");
@@ -48,6 +49,12 @@ window.addEventListener("load", () => {
   })
 
   gridSizeSelector.addEventListener("change", () => {
+    removeGrid();
+    drawGrid(gridSizeSelector.value);
+    onHover();
+  });
+
+  btnClear.addEventListener("click", () => {
     removeGrid();
     drawGrid(gridSizeSelector.value);
     onHover();
